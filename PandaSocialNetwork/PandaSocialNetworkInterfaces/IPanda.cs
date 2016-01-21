@@ -11,6 +11,6 @@ namespace PandaSocialNetworkInterfaces {
 
         string ToString();
         int GetHashCode();
-        bool IsValidEmail();
+        bool IsValidEmail(string Email);
     }
 }

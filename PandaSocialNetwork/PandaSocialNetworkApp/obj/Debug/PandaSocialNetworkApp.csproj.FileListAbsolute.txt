@@ -3,3 +3,12 @@ C:\Users\Blagoy\Documents\Visual Studio 2015\Projects\PandaSocialNetwork\PandaSo
 F:\Dropbox\Programming\HackBulgaria\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkApp\bin\Debug\PandaSocialNetworkApp.exe.config
 =======
 >>>>>>> c7ea64f6c7ff9e8fc47a3e64b7e0e5a9c007fdd6
+C:\Users\Blagoy\Documents\Visual Studio 2015\Projects\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkApp\bin\Debug\PandaSocialNetworkApp.exe
+C:\Users\Blagoy\Documents\Visual Studio 2015\Projects\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkApp\bin\Debug\PandaSocialNetworkApp.pdb
+C:\Users\Blagoy\Documents\Visual Studio 2015\Projects\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkApp\bin\Debug\PandaSocialNetwork.dll
+C:\Users\Blagoy\Documents\Visual Studio 2015\Projects\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkApp\bin\Debug\PandaSocialNetworkInterfaces.dll
+C:\Users\Blagoy\Documents\Visual Studio 2015\Projects\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkApp\bin\Debug\PandaSocialNetworkInterfaces.pdb
+C:\Users\Blagoy\Documents\Visual Studio 2015\Projects\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkApp\bin\Debug\PandaSocialNetwork.pdb
+C:\Users\Blagoy\Documents\Visual Studio 2015\Projects\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkApp\obj\Debug\PandaSocialNetworkApp.csprojResolveAssemblyReference.cache
+C:\Users\Blagoy\Documents\Visual Studio 2015\Projects\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkApp\obj\Debug\PandaSocialNetworkApp.exe
+C:\Users\Blagoy\Documents\Visual Studio 2015\Projects\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkApp\obj\Debug\PandaSocialNetworkApp.pdb
