@@ -40,7 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Panda.cs" />
+    <Compile Include="PandaSocialNetworkStorageProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocialNetwork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PandaSocialNetworkInterfaces\PandaSocialNetworkInterfaces.csproj">
