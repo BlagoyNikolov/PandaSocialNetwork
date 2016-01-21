@@ -1,1 +1,2 @@
 C:\Users\Blagoy\Documents\Visual Studio 2015\Projects\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkApp\bin\Debug\PandaSocialNetworkApp.exe.config
+F:\Dropbox\Programming\HackBulgaria\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkApp\bin\Debug\PandaSocialNetworkApp.exe.config

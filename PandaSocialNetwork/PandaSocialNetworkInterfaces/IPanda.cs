@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace PandaSocialNetworkInterfaces {
     public interface IPanda {
@@ -11,6 +7,7 @@ namespace PandaSocialNetworkInterfaces {
         GenderType Gender { get; }
         bool IsMale { get; }
         bool IsFemale { get; }
+		List<IPanda> Friends { get; } 
 
         string ToString();
         int GetHashCode();
