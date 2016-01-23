@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandaSocialNetwork", "Panda
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandaSocialNetworkApp", "PandaSocialNetworkApp\PandaSocialNetworkApp.csproj", "{EC7A4FBC-1824-4BDC-A80C-06C7D1C0D5AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetworkJsonStorageProvider", "SocialNetworkJsonStorageProvider\SocialNetworkJsonStorageProvider.csproj", "{CDF8ABC8-DB46-46FF-88A3-1A47DA57C4F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EC7A4FBC-1824-4BDC-A80C-06C7D1C0D5AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC7A4FBC-1824-4BDC-A80C-06C7D1C0D5AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC7A4FBC-1824-4BDC-A80C-06C7D1C0D5AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDF8ABC8-DB46-46FF-88A3-1A47DA57C4F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDF8ABC8-DB46-46FF-88A3-1A47DA57C4F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDF8ABC8-DB46-46FF-88A3-1A47DA57C4F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDF8ABC8-DB46-46FF-88A3-1A47DA57C4F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

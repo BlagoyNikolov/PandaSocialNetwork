@@ -20,39 +20,27 @@ namespace PandaSocialNetwork {
         }
 
         public void MakeFriends(IPanda panda1, IPanda panda2) {
-            bool alredyFriends = true;
             if (!_pandaUsers.ContainsKey(panda1.GetHashCode())) {
                 _pandaUsers.Add(panda1.GetHashCode(), panda1);
-                alredyFriends = false;
             }
             //else panda1 = _pandaUsers[panda1.GetHashCode()];
 
             if (!_pandaUsers.ContainsKey(panda2.GetHashCode())) {
                 _pandaUsers.Add(panda2.GetHashCode(), panda2);
-                alredyFriends = false;
             }
             //else panda2 = _pandaUsers[panda2.GetHashCode()];
 
-            if (!panda1.Friends.Contains(panda2)) {
-                panda1.Friends.Add(panda2);
-                panda2.Friends.Add(panda1);
+            if (!panda1.Friends.Contains(panda2.GetHashCode())) {
+                panda1.Friends.Add(panda2.GetHashCode());
+                panda2.Friends.Add(panda1.GetHashCode());
             } else {
                 throw new PandasAlreadyFriendsException();
             }
-            
-
-            //if (alredyFriends) throw new PandasAlreadyFriendsException();
-            //else {
-            //    if (!panda1.Friends.Contains(panda2)) {
-            //        panda1.Friends.Add(panda2);
-            //        panda2.Friends.Add(panda1);
-            //    }
-            //}
         }
 
         public bool AreFriends(IPanda panda1, IPanda panda2) {
             if (HasPanda(panda1) && HasPanda(panda2)) {
-                if (_pandaUsers[panda1.GetHashCode()].Friends.Contains(panda2) && _pandaUsers[panda2.GetHashCode()].Friends.Contains(panda1)) {
+                if (_pandaUsers[panda1.GetHashCode()].Friends.Contains(panda2.GetHashCode()) && _pandaUsers[panda2.GetHashCode()].Friends.Contains(panda1.GetHashCode())) {
                     return true;
                 }
             }
@@ -60,12 +48,15 @@ namespace PandaSocialNetwork {
         }
 
         public List<IPanda> FriendsOf(IPanda panda) {
-            if (!_pandaUsers.ContainsKey(panda.GetHashCode())) {
-                throw new PandasNotAMemberOfTheSocialNetwork();
-            }
-            else {
-                return panda.Friends;
-            }
+
+
+
+            //if (!_pandaUsers.ContainsKey(panda.GetHashCode())) {
+            //    throw new PandasNotAMemberOfTheSocialNetwork();
+            //}
+            //else {
+            //    return panda.Friends;
+            //}
         }
 
         public int ConnectionLevel(IPanda panda1, IPanda panda2) {

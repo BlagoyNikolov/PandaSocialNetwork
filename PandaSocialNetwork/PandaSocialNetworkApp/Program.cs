@@ -10,19 +10,26 @@ namespace PandaSocialNetworkApp {
     class Program {
         static void Main(string[] args) {
             var network = new SocialNetwork();
-            Panda blago = new Panda("Ivo", "ivo@pandamail.com", GenderType.Male);
+            Panda blago = new Panda("Ivo", "blago@pandamail.com", GenderType.Male);
             Panda rado = new Panda("Rado", "rado@pandamail.com", GenderType.Male);
             Panda tony = new Panda("Tony", "tony@pandamail.com", GenderType.Female);
             Console.WriteLine(blago.ToString()); 
             Console.WriteLine(rado.ToString());
-            Console.WriteLine(tony.ToString()); 
+            Console.WriteLine(tony.ToString());
+
+            Console.WriteLine(network.HasPanda(blago));
 
             network.AddPanda(blago);
             network.AddPanda(rado);
             network.AddPanda(tony);
 
+            Console.WriteLine(network.HasPanda(blago));
+
             network.MakeFriends(blago, rado);
             network.MakeFriends(rado, tony);
+
+            Console.WriteLine(network.AreFriends(blago, rado));
+            Console.WriteLine(network.AreFriends(tony, rado));
 
             //network.ConnectionLevel(blago, rado); // 1 true
             //network.ConnectionLevel(blago, tony); // 2 true
