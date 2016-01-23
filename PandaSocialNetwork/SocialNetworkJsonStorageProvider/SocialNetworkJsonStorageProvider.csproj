@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JsonStorageProvider.cs" />
+    <Compile Include="PandaDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PandaSocialNetworkInterfaces\PandaSocialNetworkInterfaces.csproj">
+      <Project>{bbe3fb1c-df0f-4ca5-a1f6-f1f82c27d3b2}</Project>
+      <Name>PandaSocialNetworkInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PandaSocialNetwork\PandaSocialNetwork.csproj">
+      <Project>{8837463f-80b6-49fd-bf3b-dd1431b14fe3}</Project>
+      <Name>PandaSocialNetwork</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
