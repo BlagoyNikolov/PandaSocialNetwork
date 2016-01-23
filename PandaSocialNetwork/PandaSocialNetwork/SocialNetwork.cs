@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using PandaSocialNetworkInterfaces;
+using System.Linq;
 using System;
 
 namespace PandaSocialNetwork {
@@ -33,7 +34,8 @@ namespace PandaSocialNetwork {
             if (!panda1.Friends.Contains(panda2.GetHashCode())) {
                 panda1.Friends.Add(panda2.GetHashCode());
                 panda2.Friends.Add(panda1.GetHashCode());
-            } else {
+            }
+            else {
                 throw new PandasAlreadyFriendsException();
             }
         }
@@ -48,15 +50,18 @@ namespace PandaSocialNetwork {
         }
 
         public List<IPanda> FriendsOf(IPanda panda) {
+            List<IPanda> ListOfPandas = new List<IPanda>();
+            //ListOfPandas = _pandaUsers.Select(panda.GetHashCode() => );
 
+            var pandaAndHash = from pandas in _pandaUsers
+                               join hash in panda.Friends
+                               on pandas.GetHashCode() equals hash
+                               select panda;
+            foreach (var item in pandaAndHash) {
+                ListOfPandas.Add(item);
+            }
+            return ListOfPandas;
 
-
-            //if (!_pandaUsers.ContainsKey(panda.GetHashCode())) {
-            //    throw new PandasNotAMemberOfTheSocialNetwork();
-            //}
-            //else {
-            //    return panda.Friends;
-            //}
         }
 
         public int ConnectionLevel(IPanda panda1, IPanda panda2) {
@@ -115,12 +120,11 @@ namespace PandaSocialNetwork {
             return pandasWithGender;
         }
 
-		public IEnumerable<IPanda> GetAllPandas()
-		{
-			return _pandaUsers.Values;
-		}
+        public IEnumerable<IPanda> GetAllPandas() {
+            return _pandaUsers.Values;
+        }
 
-		private class PandaWithLevel {
+        private class PandaWithLevel {
             public int Panda;
             public int Level;
         }
