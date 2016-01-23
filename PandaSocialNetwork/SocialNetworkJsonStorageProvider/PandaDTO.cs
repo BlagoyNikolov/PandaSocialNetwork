@@ -1,14 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PandaSocialNetwork;
 using PandaSocialNetworkInterfaces;
 
 namespace SocialNetworkJsonStorageProvider
 {
+	[Serializable]
 	internal class PandaDTO
 	{
-		string Name { get; set; }
-		string Email { get; set; }
-		GenderType Gender { get; set; }
+		public string Name { get; set; }
+		public string Email { get; set; }
+		public GenderType Gender { get; set; }
 
 		internal static PandaDTO ConvertToDto(IPanda panda)
 		{

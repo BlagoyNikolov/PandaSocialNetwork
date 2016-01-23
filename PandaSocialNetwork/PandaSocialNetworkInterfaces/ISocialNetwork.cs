@@ -2,6 +2,7 @@
 
 namespace PandaSocialNetworkInterfaces {
     public interface ISocialNetwork {
+		Dictionary<int,IPanda> Pandas { get; }
         void AddPanda(IPanda panda);
         bool HasPanda(IPanda panda);
         void MakeFriends(IPanda panda1, IPanda panda2);
