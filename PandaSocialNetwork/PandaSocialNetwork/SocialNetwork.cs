@@ -102,6 +102,11 @@ namespace PandaSocialNetwork
 			return pandasWithGender;
 		}
 
+	    public IEnumerable<IPanda> GetAllPandas()
+	    {
+		    return _pandaUsers.Values;
+	    }
+
 	    private class PandaWithLevel
 	    {
 		    public IPanda Panda;
