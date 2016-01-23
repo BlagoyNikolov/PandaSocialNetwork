@@ -33,9 +33,10 @@ namespace PandaSocialNetworkApp {
 
             Console.WriteLine(network.HowManyGenderInNetwork(1, rado, GenderType.Female)); // 1 true
 
+	        ISocialNetwork loaded;
 			var provider = new JsonStorageProvider();
 			provider.Save(network);
-
+	        loaded = provider.Load();
         }
     }
 }
