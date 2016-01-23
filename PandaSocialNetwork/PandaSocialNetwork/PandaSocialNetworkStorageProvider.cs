@@ -1,10 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using PandaSocialNetworkInterfaces;
 
-namespace PandaSocialNetwork {
-    class PandaSocialNetworkStorageProvider {
-    }
+namespace PandaSocialNetwork
+{
+    public class PandaSocialNetworkStorageProvider : IPandaSocialNetworkStorageProvider
+	{
+	    public ISocialNetwork Load()
+	    {
+			 throw new NotImplementedException();
+	    }
+
+	    public void Save(ISocialNetwork network)
+	    {
+		}
+	}
 }
