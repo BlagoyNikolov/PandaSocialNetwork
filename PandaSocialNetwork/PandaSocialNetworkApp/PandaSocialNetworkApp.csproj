@@ -58,6 +58,10 @@
       <Project>{8837463f-80b6-49fd-bf3b-dd1431b14fe3}</Project>
       <Name>PandaSocialNetwork</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SocialNetworkJsonStorageProvider\SocialNetworkJsonStorageProvider.csproj">
+      <Project>{cdf8abc8-db46-46ff-88a3-1a47da57c4f8}</Project>
+      <Name>SocialNetworkJsonStorageProvider</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

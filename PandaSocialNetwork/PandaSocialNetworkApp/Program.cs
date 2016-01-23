@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PandaSocialNetwork;
 using PandaSocialNetworkInterfaces;
+using SocialNetworkJsonStorageProvider;
 
 namespace PandaSocialNetworkApp {
     class Program {
@@ -31,10 +28,14 @@ namespace PandaSocialNetworkApp {
             Console.WriteLine(network.AreFriends(blago, rado));
             Console.WriteLine(network.AreFriends(tony, rado));
 
-            //network.ConnectionLevel(blago, rado); // 1 true
-            //network.ConnectionLevel(blago, tony); // 2 true
+			Console.WriteLine(network.ConnectionLevel(blago, rado));
+			Console.WriteLine(network.ConnectionLevel(blago, tony));
 
-            //network.HowManyGenderInNetwork(1, rado, GenderType.Female); // 1 true
+            Console.WriteLine(network.HowManyGenderInNetwork(1, rado, GenderType.Female)); // 1 true
+
+			var provider = new JsonStorageProvider();
+			provider.Save(network);
+
         }
     }
 }

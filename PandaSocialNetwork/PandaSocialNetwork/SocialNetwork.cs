@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using PandaSocialNetworkInterfaces;
+using System.Linq;
 using System;
 
 namespace PandaSocialNetwork {
@@ -33,7 +34,8 @@ namespace PandaSocialNetwork {
             if (!panda1.Friends.Contains(panda2.GetHashCode())) {
                 panda1.Friends.Add(panda2.GetHashCode());
                 panda2.Friends.Add(panda1.GetHashCode());
-            } else {
+            }
+            else {
                 throw new PandasAlreadyFriendsException();
             }
         }
@@ -48,15 +50,18 @@ namespace PandaSocialNetwork {
         }
 
         public List<IPanda> FriendsOf(IPanda panda) {
+            List<IPanda> ListOfPandas = new List<IPanda>();
+            //ListOfPandas = _pandaUsers.Select(panda.GetHashCode() => );
 
+            var pandaAndHash = from pandas in _pandaUsers
+                               join hash in panda.Friends
+                               on pandas.GetHashCode() equals hash
+                               select panda;
+            foreach (var item in pandaAndHash) {
+                ListOfPandas.Add(item);
+            }
+            return ListOfPandas;
 
-
-            //if (!_pandaUsers.ContainsKey(panda.GetHashCode())) {
-            //    throw new PandasNotAMemberOfTheSocialNetwork();
-            //}
-            //else {
-            //    return panda.Friends;
-            //}
         }
 
         public int ConnectionLevel(IPanda panda1, IPanda panda2) {
@@ -70,16 +75,16 @@ namespace PandaSocialNetwork {
                 var connectionLevel = currPanda.Level + 1;
 
                 if (currPanda.Panda == panda2.GetHashCode())
-                    return connectionLevel;
+                    return connectionLevel - 1;
 
                 if (!visited.Contains(currPanda.Panda)) {
                     visited.Add(currPanda.Panda);
-                }
 
-                foreach (var friend in _pandaUsers[currPanda.Panda].Friends) {
-                    pending.Enqueue(new PandaWithLevel { Level = connectionLevel, Panda = friend });
-                }
-            }
+					foreach (var friend in _pandaUsers[currPanda.Panda].Friends) {
+						pending.Enqueue(new PandaWithLevel { Level = connectionLevel, Panda = friend });
+					}
+				}
+			}
 
             return -1;
         }
@@ -95,8 +100,12 @@ namespace PandaSocialNetwork {
             int connectionLevel = 0;
 
             pending.Enqueue(new PandaWithLevel { Level = 0, Panda = panda.GetHashCode() });
+			foreach(var friend in panda.Friends)
+			{
+				pending.Enqueue(new PandaWithLevel { Level = connectionLevel, Panda = friend });
+			}
 
-            while (pending.Count > 0 || connectionLevel <= level) {
+			while (pending.Count > 0 && connectionLevel <= level) {
                 var currPanda = pending.Dequeue();
                 connectionLevel = currPanda.Level + 1;
 
@@ -105,22 +114,21 @@ namespace PandaSocialNetwork {
 
                     if (_pandaUsers[currPanda.Panda].Gender == gender)
                         pandasWithGender++;
-                }
 
-                foreach (var friend in _pandaUsers[currPanda.Panda].Friends) {
-                    pending.Enqueue(new PandaWithLevel { Level = connectionLevel, Panda = friend });
-                }
-            }
+					foreach (var friend in _pandaUsers[currPanda.Panda].Friends) {
+						pending.Enqueue(new PandaWithLevel { Level = connectionLevel, Panda = friend });
+					}
+				}
+			}
 
             return pandasWithGender;
         }
 
-		public IEnumerable<IPanda> GetAllPandas()
-		{
-			return _pandaUsers.Values;
-		}
+        public IEnumerable<IPanda> GetAllPandas() {
+            return _pandaUsers.Values;
+        }
 
-		private class PandaWithLevel {
+        private class PandaWithLevel {
             public int Panda;
             public int Level;
         }
