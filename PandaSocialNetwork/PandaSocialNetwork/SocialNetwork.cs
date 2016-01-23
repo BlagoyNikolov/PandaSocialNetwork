@@ -61,22 +61,22 @@ namespace PandaSocialNetwork {
 
         public int ConnectionLevel(IPanda panda1, IPanda panda2) {
             var pending = new Queue<PandaWithLevel>();
-            var visited = new List<IPanda>();
+            var visited = new List<int>();
 
-            pending.Enqueue(new PandaWithLevel { Level = 0, Panda = panda1 });
+            pending.Enqueue(new PandaWithLevel { Level = 0, Panda = panda1.GetHashCode() });
 
             while (pending.Count > 0) {
                 var currPanda = pending.Dequeue();
                 var connectionLevel = currPanda.Level + 1;
 
-                if (currPanda == panda2)
+                if (currPanda.Panda == panda2.GetHashCode())
                     return connectionLevel;
 
                 if (!visited.Contains(currPanda.Panda)) {
                     visited.Add(currPanda.Panda);
                 }
 
-                foreach (var friend in currPanda.Panda.Friends) {
+                foreach (var friend in _pandaUsers[currPanda.Panda].Friends) {
                     pending.Enqueue(new PandaWithLevel { Level = connectionLevel, Panda = friend });
                 }
             }
@@ -91,10 +91,10 @@ namespace PandaSocialNetwork {
         public int HowManyGenderInNetwork(int level, IPanda panda, GenderType gender) {
             int pandasWithGender = 0;
             var pending = new Queue<PandaWithLevel>();
-            var visited = new List<IPanda> { panda };
+            var visited = new List<int> { panda.GetHashCode() };
             int connectionLevel = 0;
 
-            pending.Enqueue(new PandaWithLevel { Level = 0, Panda = panda });
+            pending.Enqueue(new PandaWithLevel { Level = 0, Panda = panda.GetHashCode() });
 
             while (pending.Count > 0 || connectionLevel <= level) {
                 var currPanda = pending.Dequeue();
@@ -103,11 +103,11 @@ namespace PandaSocialNetwork {
                 if (!visited.Contains(currPanda.Panda)) {
                     visited.Add(currPanda.Panda);
 
-                    if (currPanda.Panda.Gender == gender)
+                    if (_pandaUsers[currPanda.Panda].Gender == gender)
                         pandasWithGender++;
                 }
 
-                foreach (var friend in currPanda.Panda.Friends) {
+                foreach (var friend in _pandaUsers[currPanda.Panda].Friends) {
                     pending.Enqueue(new PandaWithLevel { Level = connectionLevel, Panda = friend });
                 }
             }
@@ -121,7 +121,7 @@ namespace PandaSocialNetwork {
 		}
 
 		private class PandaWithLevel {
-            public IPanda Panda;
+            public int Panda;
             public int Level;
         }
 
