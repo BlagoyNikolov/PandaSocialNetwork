@@ -7,9 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PandaSocialNetwork {
-    class Panda : IPanda {
-
-        private string _name;
+    public class Panda : IPanda {
 
         private string _email;
 
@@ -19,6 +17,7 @@ namespace PandaSocialNetwork {
             Name = name;
             Email = email;
             Gender = gender;
+            Friends = new List<IPanda>();
         }
 
         public string Name { get; private set; }
@@ -67,7 +66,6 @@ namespace PandaSocialNetwork {
                 hash = hash * 23 + Gender.GetHashCode();
                 hash = hash * 23 + IsMale.GetHashCode();
                 hash = hash * 23 + IsFemale.GetHashCode();
-                hash = hash * 23 + Friends.GetHashCode();
                 return hash;
             }
         }

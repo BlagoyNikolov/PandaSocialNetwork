@@ -3,7 +3,7 @@ using PandaSocialNetworkInterfaces;
 using System;
 
 namespace PandaSocialNetwork {
-    class SocialNetwork : ISocialNetwork {
+    public class SocialNetwork : ISocialNetwork {
         private Dictionary<int, IPanda> _pandaUsers;
 
         public SocialNetwork() {
@@ -33,13 +33,21 @@ namespace PandaSocialNetwork {
             }
             //else panda2 = _pandaUsers[panda2.GetHashCode()];
 
-            if (alredyFriends) throw new PandasAlreadyFriendsException();
-            else {
-                if (!panda1.Friends.Contains(panda2)) {
-                    panda1.Friends.Add(panda2);
-                    panda2.Friends.Add(panda1);
-                }
+            if (!panda1.Friends.Contains(panda2)) {
+                panda1.Friends.Add(panda2);
+                panda2.Friends.Add(panda1);
+            } else {
+                throw new PandasAlreadyFriendsException();
             }
+            
+
+            //if (alredyFriends) throw new PandasAlreadyFriendsException();
+            //else {
+            //    if (!panda1.Friends.Contains(panda2)) {
+            //        panda1.Friends.Add(panda2);
+            //        panda2.Friends.Add(panda1);
+            //    }
+            //}
         }
 
         public bool AreFriends(IPanda panda1, IPanda panda2) {
