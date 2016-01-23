@@ -10,5 +10,6 @@ namespace PandaSocialNetworkInterfaces {
         int ConnectionLevel(IPanda panda1, IPanda panda2);
         bool AreConnected(IPanda panda1, IPanda panda2);
         int HowManyGenderInNetwork(int level, IPanda panda, GenderType gender);
+	    IEnumerable<IPanda> GetAllPandas();
     }
 }
