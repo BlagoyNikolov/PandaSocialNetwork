@@ -10,15 +10,14 @@ namespace SocialNetworkJsonStorageProvider
 		string Email { get; set; }
 		GenderType Gender { get; set; }
 
-		internal static PandaDTO ConvertToDtos(IPanda panda)
+		internal static PandaDTO ConvertToDto(IPanda panda)
 		{
 			return new PandaDTO {Name = panda.Name, Email = panda.Email, Gender = panda.Gender};
 		}
 
 		internal static IPanda ConvertToPanda(PandaDTO dto)
 		{
-//			Panda
-			return new Panda();
+			return new Panda(dto.Name,dto.Email,dto.Gender);
 		}
 	}
 }
