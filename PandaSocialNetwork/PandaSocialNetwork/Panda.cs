@@ -17,7 +17,7 @@ namespace PandaSocialNetwork {
             Name = name;
             Email = email;
             Gender = gender;
-            Friends = new List<IPanda>();
+            Friends = new List<int>();
         }
 
         public string Name { get; set; }
@@ -47,7 +47,7 @@ namespace PandaSocialNetwork {
             }
         }
 
-        public List<IPanda> Friends { get; set; }
+        public List<int> Friends { get; set; }
 
         public override string ToString() {
             StringBuilder output = new StringBuilder();

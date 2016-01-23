@@ -9,7 +9,7 @@ namespace PandaSocialNetworkInterfaces {
         GenderType Gender { get;set; }
         bool IsMale { get; }
         bool IsFemale { get; }
-		List<IPanda> Friends { get; set; } 
+		List<int> Friends { get; set; } 
 
         string ToString();
         int GetHashCode();
