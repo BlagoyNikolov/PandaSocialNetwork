@@ -8,9 +8,20 @@ using System.Threading.Tasks;
 
 namespace PandaSocialNetwork {
     class Panda : IPanda {
-        private string _email; 
 
-        public string Name { get; private set; }
+        private string _name;
+
+        private string _email;
+
+        private GenderType _gender;
+
+        public Panda(string name, string email, GenderType gender) {
+            Name = name;
+            Email = email;
+            Gender = gender;
+        }
+
+        public string Name { get; set; }
 
         public string Email {
             get {
@@ -23,13 +34,21 @@ namespace PandaSocialNetwork {
             }
         }
 
-        public GenderType Gender { get; private set; }
+        public GenderType Gender { get; set; }
 
-        public bool IsMale { get; private set; }
+        public bool IsMale {
+            get {
+                return _gender == GenderType.Male;
+            }
+        }
 
-        public bool IsFemale { get; private set; }
+        public bool IsFemale {
+            get {
+                return _gender == GenderType.Female;
+            }
+        }
 
-        public List<IPanda> Friends { get; private set; }
+        public List<IPanda> Friends { get; set; }
 
         public override string ToString() {
             StringBuilder output = new StringBuilder();

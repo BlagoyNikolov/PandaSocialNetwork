@@ -13,10 +13,6 @@ namespace PandaSocialNetwork
 
 	    public void Save(ISocialNetwork network)
 	    {
-		    using (var sr = new StreamReader("pandasave.pandanet"))
-		    {
-			    
-		    }
 		}
 	}
 }
