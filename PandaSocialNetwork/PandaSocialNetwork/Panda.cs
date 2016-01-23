@@ -20,7 +20,7 @@ namespace PandaSocialNetwork {
             Friends = new List<IPanda>();
         }
 
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         public string Email {
             get {
@@ -33,7 +33,7 @@ namespace PandaSocialNetwork {
             }
         }
 
-        public GenderType Gender { get; private set; }
+        public GenderType Gender { get; set; }
 
         public bool IsMale {
             get {
@@ -47,7 +47,7 @@ namespace PandaSocialNetwork {
             }
         }
 
-        public List<IPanda> Friends { get; private set; }
+        public List<IPanda> Friends { get; set; }
 
         public override string ToString() {
             StringBuilder output = new StringBuilder();
