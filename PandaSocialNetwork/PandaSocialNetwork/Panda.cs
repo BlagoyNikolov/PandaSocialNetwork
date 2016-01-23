@@ -29,7 +29,7 @@ namespace PandaSocialNetwork {
             set {
                 if (IsValidEmail(value)) {
                     _email = value;
-                }         
+                }
             }
         }
 
@@ -51,10 +51,8 @@ namespace PandaSocialNetwork {
 
         public override string ToString() {
             StringBuilder output = new StringBuilder();
-            output.AppendFormat("Panda: Name: {0}, Email: {1}, Gender: {2}, IsMale: {3}, IsFemale: {4} + \nList of friends:\n", Name, Email, Gender, IsMale, IsFemale);
-            foreach (var item in Friends) {
-                output.Append(item + " ");
-            }
+            output.AppendFormat("Panda: Name: {0}, Email: {1}, Gender: {2}, IsMale: {3}, IsFemale: {4}" + "\nNumber of friends: ", Name, Email, Gender, IsMale, IsFemale);
+            output.Append(Friends.Count);
             return output.ToString();
         }
 
@@ -70,10 +68,9 @@ namespace PandaSocialNetwork {
             }
         }
 
-        public bool IsValidEmail(string email)
-        {
-	        var expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-	        if (Regex.IsMatch(email, expresion)) {
+        public bool IsValidEmail(string email) {
+            var expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(email, expresion)) {
                 if (Regex.Replace(email, expresion, string.Empty).Length == 0) {
                     return true;
                 }

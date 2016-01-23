@@ -51,17 +51,14 @@ namespace PandaSocialNetwork {
 
         public List<IPanda> FriendsOf(IPanda panda) {
             List<IPanda> ListOfPandas = new List<IPanda>();
-            //ListOfPandas = _pandaUsers.Select(panda.GetHashCode() => );
-
             var pandaAndHash = from pandas in _pandaUsers
                                join hash in panda.Friends
-                               on pandas.GetHashCode() equals hash
-                               select panda;
+                               on pandas.Key equals hash
+                               select pandas.Value;
             foreach (var item in pandaAndHash) {
                 ListOfPandas.Add(item);
             }
             return ListOfPandas;
-
         }
 
         public int ConnectionLevel(IPanda panda1, IPanda panda2) {
@@ -75,7 +72,7 @@ namespace PandaSocialNetwork {
                 var connectionLevel = currPanda.Level + 1;
 
                 if (currPanda.Panda == panda2.GetHashCode())
-                    return connectionLevel;
+                    return connectionLevel - 1;
 
                 if (!visited.Contains(currPanda.Panda)) {
                     visited.Add(currPanda.Panda);
