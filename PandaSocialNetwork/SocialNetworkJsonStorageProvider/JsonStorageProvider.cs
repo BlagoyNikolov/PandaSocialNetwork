@@ -22,7 +22,13 @@ namespace SocialNetworkJsonStorageProvider
 			ISocialNetwork socialNetwork = new SocialNetwork();
 
 			LoadPandas(socialNetwork, "PandaNetwork.pandanet");
+			var connections = ReadConnections("PandaNetworkConnections.pandanetconn");
 
+			foreach (var connection in connections)
+			{
+				var currPanda = socialNetwork.Pandas[connection.Key];
+				currPanda.Friends.AddRange(connection.Value);
+			}
 
 			return socialNetwork;
 		}
@@ -30,7 +36,8 @@ namespace SocialNetworkJsonStorageProvider
 		private static void WritePandas(IEnumerable<IPanda> pandas, string filename)
 		{
 			var serializer = new JavaScriptSerializer();
-			var serializedResult = serializer.Serialize(pandas.Select(PandaDTO.ConvertToDto));
+			var pandasList = pandas.Select(PandaDTO.ConvertToDto);
+			var serializedResult = serializer.Serialize(pandasList.ToList());
 
 			using(var sw = new StreamWriter(filename))
 			{
@@ -94,7 +101,7 @@ namespace SocialNetworkJsonStorageProvider
 							continue;
 						}
 						else
-						{
+			{
 							connections[currKey].Add(int.Parse(line));
 						}
 					}
@@ -102,6 +109,6 @@ namespace SocialNetworkJsonStorageProvider
 			}
 
 			return connections;
-		}  
+		}
 	}
 }

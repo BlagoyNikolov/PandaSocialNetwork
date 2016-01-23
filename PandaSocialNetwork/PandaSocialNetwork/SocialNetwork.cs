@@ -11,7 +11,9 @@ namespace PandaSocialNetwork {
             _pandaUsers = new Dictionary<int, IPanda>();
         }
 
-        public void AddPanda(IPanda panda) {
+	    public Dictionary<int, IPanda> Pandas => _pandaUsers;
+
+		public void AddPanda(IPanda panda) {
             if (_pandaUsers.ContainsKey(panda.GetHashCode())) throw new PandaAlreadyThereException();
             else _pandaUsers.Add(panda.GetHashCode(), panda);
         }
