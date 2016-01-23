@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PandaSocialNetwork;
 using PandaSocialNetworkInterfaces;
 
 namespace SocialNetworkJsonStorageProvider
 {
+	[Serializable]
 	internal class PandaDTO
 	{
 		string Name { get; set; }

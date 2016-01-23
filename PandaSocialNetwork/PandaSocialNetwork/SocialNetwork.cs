@@ -75,16 +75,16 @@ namespace PandaSocialNetwork {
                 var connectionLevel = currPanda.Level + 1;
 
                 if (currPanda.Panda == panda2.GetHashCode())
-                    return connectionLevel;
+                    return connectionLevel - 1;
 
                 if (!visited.Contains(currPanda.Panda)) {
                     visited.Add(currPanda.Panda);
-                }
 
-                foreach (var friend in _pandaUsers[currPanda.Panda].Friends) {
-                    pending.Enqueue(new PandaWithLevel { Level = connectionLevel, Panda = friend });
-                }
-            }
+					foreach (var friend in _pandaUsers[currPanda.Panda].Friends) {
+						pending.Enqueue(new PandaWithLevel { Level = connectionLevel, Panda = friend });
+					}
+				}
+			}
 
             return -1;
         }
@@ -100,8 +100,12 @@ namespace PandaSocialNetwork {
             int connectionLevel = 0;
 
             pending.Enqueue(new PandaWithLevel { Level = 0, Panda = panda.GetHashCode() });
+			foreach(var friend in panda.Friends)
+			{
+				pending.Enqueue(new PandaWithLevel { Level = connectionLevel, Panda = friend });
+			}
 
-            while (pending.Count > 0 || connectionLevel <= level) {
+			while (pending.Count > 0 && connectionLevel <= level) {
                 var currPanda = pending.Dequeue();
                 connectionLevel = currPanda.Level + 1;
 
@@ -110,12 +114,12 @@ namespace PandaSocialNetwork {
 
                     if (_pandaUsers[currPanda.Panda].Gender == gender)
                         pandasWithGender++;
-                }
 
-                foreach (var friend in _pandaUsers[currPanda.Panda].Friends) {
-                    pending.Enqueue(new PandaWithLevel { Level = connectionLevel, Panda = friend });
-                }
-            }
+					foreach (var friend in _pandaUsers[currPanda.Panda].Friends) {
+						pending.Enqueue(new PandaWithLevel { Level = connectionLevel, Panda = friend });
+					}
+				}
+			}
 
             return pandasWithGender;
         }
